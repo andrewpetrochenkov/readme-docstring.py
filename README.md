@@ -1,12 +1,14 @@
-<!-- https://pypi.org/project/readme-generator/ -->
+<!--
+https://pypi.org/project/readme-generator/
+-->
 
 [![](https://img.shields.io/pypi/pyversions/readme-docstring.svg?longCache=True)](https://pypi.org/project/readme-docstring/)
 [![](https://img.shields.io/pypi/v/readme-docstring.svg?maxAge=3600)](https://pypi.org/project/readme-docstring/)
 [![Travis](https://api.travis-ci.org/looking-for-a-job/readme-docstring.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/readme-docstring.py/)
 
-#### Install
+#### Installation
 ```bash
-[sudo] pip install readme-docstring
+$ [sudo] pip install readme-docstring
 ```
 
 #### Classes
@@ -25,6 +27,12 @@ function|`__doc__`
 `readme_docstring.getmembers()` |return all the members defined in `__all__` in a list of (name, value) pairs
 `readme_docstring.getmodules()` |return a list of modules
 `readme_docstring.getspec(routine)` |return a string with Python routine specification
+
+#### CLI
+usage|`__doc__`
+-|-
+`python -m readme_docstring.classes` |generate `classes` table
+`python -m readme_docstring.functions` |generate `functions` table
 
 #### Examples
 example with [readme-generator](https://pypi.org/project/readme-generator/)
@@ -51,7 +59,9 @@ class Cli(readme_docstring.Table):
 ```
 
 #### Related projects
-+   [`classifiers-generator` - classifiers generator](https://pypi.org/project/classifiers-generator/)
++   [`classifiers-generator` - python classifiers generator](https://pypi.org/project/classifiers-generator/)
++   [`commands-generator` - shell commands generator](https://pypi.org/project/commands-generator/)
++   [`launchd-generator` - launchd.plist generator](https://pypi.org/project/launchd-generator/)
 +   [`readme-badges` - `README.md` badges](https://pypi.org/project/readme-badges/)
 +   [`readme-docstring` - generate README.md from python docstrings](https://pypi.org/project/readme-docstring/)
 +   [`readme-generator` - `README.md` generator](https://pypi.org/project/readme-generator/)

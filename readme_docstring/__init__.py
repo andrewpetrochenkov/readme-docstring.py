@@ -65,6 +65,7 @@ def getfunctions():
 class Table(markdown_table.Table):
     """abstract table class. attrs: `headers`, `objects`"""
     columns = ["name", "`__doc__`"]
+    objects = []
 
     def __init__(self, objects):
         self.objects = list(objects)
