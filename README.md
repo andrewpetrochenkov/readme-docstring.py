@@ -1,5 +1,6 @@
 <!--
 https://pypi.org/project/readme-generator/
+https://pypi.org/project/python-readme-generator/
 -->
 
 [![](https://img.shields.io/pypi/pyversions/readme-docstring.svg?longCache=True)](https://pypi.org/project/readme-docstring/)
@@ -28,7 +29,7 @@ function|`__doc__`
 `readme_docstring.getmodules()` |return a list of modules
 `readme_docstring.getspec(routine)` |return a string with Python routine specification
 
-#### CLI
+#### Executable modules
 usage|`__doc__`
 -|-
 `python -m readme_docstring.classes` |generate `classes` table
@@ -38,36 +39,30 @@ usage|`__doc__`
 example with [readme-generator](https://pypi.org/project/readme-generator/)
 ```python
 class Readme(readme_generator.Readme):
+    order = [..., "classes", "functions", ...]
+
     def classes(self):
-        return readme_docstring.Classes()
+        classes = self.getclasses()
+        return readme_docstring.Classes(classes)
 
     def functions(self):
-        return readme_docstring.Functions()
+        functions = self.getfunctions()
+        return readme_docstring.Functions(functions)
 ```
 
 custom table
 ```python
-class Cli(readme_docstring.Table):
+class ExecutableModules(readme_docstring.Table):
     columns = ["usage", "`__doc__`"]
 
-    def __init__(self):
-        self.objects = list(filter(lambda m: hasattr(m, "click"), setupcfg.getmodules()))
+    def __init__(self,modules):
+        self.objects = modules
 
-    def get_name(self, obj):
+    def getleftcell(self, obj):
         default = "python -m %s" % obj.__name__.replace(".__main__", "")
         return "`%s`" % getattr(obj, "USAGE", default)
 ```
 
-#### Related projects
-+   [`classifiers-generator` - python classifiers generator](https://pypi.org/project/classifiers-generator/)
-+   [`commands-generator` - shell commands generator](https://pypi.org/project/commands-generator/)
-+   [`launchd-generator` - launchd.plist generator](https://pypi.org/project/launchd-generator/)
-+   [`readme-badges` - `README.md` badges](https://pypi.org/project/readme-badges/)
-+   [`readme-docstring` - generate README.md from python docstrings](https://pypi.org/project/readme-docstring/)
-+   [`readme-generator` - `README.md` generator](https://pypi.org/project/readme-generator/)
-+   [`setupcfg-generator` - `setup.cfg` generator](https://pypi.org/project/setupcfg-generator/)
-+   [`travis-generator` - `.travis.yml` generator](https://pypi.org/project/travis-generator/)
-
 <p align="center">
-    <a href="https://pypi.org/project/readme-generator/">readme-generator</a>
+    <a href="https://pypi.org/project/python-readme-generator/">python-readme-generator</a>
 </p>

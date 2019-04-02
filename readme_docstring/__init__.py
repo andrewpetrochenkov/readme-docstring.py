@@ -70,7 +70,7 @@ class Table(markdown_table.Table):
     def __init__(self, objects):
         self.objects = list(objects)
 
-    def get_name(self, obj):
+    def getleftcell(self, obj):
         name = obj.__module__ + '.' + obj.__name__
         if inspect.isroutine(obj):
             value = readme_docstring.getspec(obj)
@@ -78,12 +78,15 @@ class Table(markdown_table.Table):
             name = obj.__module__ + '.' + value
         return "`%s`" % name
 
-    def get_data(self):
+    def getrightcell(self, obj):
+        return readme_docstring.getdoc(obj)
+
+    def getmatrix(self):
         data = []
         for obj in self.objects:
-            name = self.get_name(obj)
-            doc = readme_docstring.getdoc(obj)
-            data.append([name, doc])
+            left = self.getleftcell(obj)
+            right = self.getrightcell(obj)
+            data.append([left, right])
         return data
 
 
