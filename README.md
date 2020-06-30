@@ -1,39 +1,16 @@
 <!--
-https://pypi.org/project/readme-generator/
-https://pypi.org/project/python-readme-generator/
+https://readme42.com
 -->
 
-[![](https://img.shields.io/pypi/pyversions/readme-docstring.svg?longCache=True)](https://pypi.org/project/readme-docstring/)
-[![](https://img.shields.io/pypi/v/readme-docstring.svg?maxAge=3600)](https://pypi.org/project/readme-docstring/)
-[![Travis](https://api.travis-ci.org/looking-for-a-job/readme-docstring.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/readme-docstring.py/)
 
-#### Installation
+[![](https://img.shields.io/pypi/v/readme-docstring.svg?maxAge=3600)](https://pypi.org/project/readme-docstring/)
+[![](https://img.shields.io/badge/License-Unlicense-blue.svg?longCache=True)](https://unlicense.org/)
+[![](https://github.com/andrewp-as-is/readme-docstring.py/workflows/tests42/badge.svg)](https://github.com/andrewp-as-is/readme-docstring.py/actions)
+
+### Installation
 ```bash
 $ [sudo] pip install readme-docstring
 ```
-
-#### Classes
-class|`__doc__`
--|-
-`readme_docstring.Classes` |`classes` table class. attrs: `classes`
-`readme_docstring.Functions` |`functions` table class. attrs: `functions`
-`readme_docstring.Table` |abstract table class. attrs: `headers`, `objects`
-
-#### Functions
-function|`__doc__`
--|-
-`readme_docstring.getclasses()` |return a list of classes defined in `__all__`
-`readme_docstring.getdoc(obj)` |return first line of an object docstring
-`readme_docstring.getfunctions()` |return a list of functions defined in `__all__`
-`readme_docstring.getmembers()` |return all the members defined in `__all__` in a list of (name, value) pairs
-`readme_docstring.getmodules()` |return a list of modules
-`readme_docstring.getspec(routine)` |return a string with Python routine specification
-
-#### Executable modules
-usage|`__doc__`
--|-
-`python -m readme_docstring.classes` |generate `classes` table
-`python -m readme_docstring.functions` |generate `functions` table
 
 #### Examples
 example with [readme-generator](https://pypi.org/project/readme-generator/)
@@ -64,5 +41,5 @@ class ExecutableModules(readme_docstring.Table):
 ```
 
 <p align="center">
-    <a href="https://pypi.org/project/python-readme-generator/">python-readme-generator</a>
+    <a href="https://readme42.com/">readme42.com</a>
 </p>

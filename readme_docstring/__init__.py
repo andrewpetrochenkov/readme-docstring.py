@@ -1,28 +1,27 @@
-#!/usr/bin/env python
+__all__ = ['getdoc', 'getspec', 'getmodules',
+           'getmembers', 'getclasses', 'getfunctions', 'Table', 'Classes', 'Functions']
+
+
 import inspect
 import markdown_table
 import os
 import pydoc
-import public
 import readme_docstring
 import setupcfg
 
 
-@public.add
 def getdoc(obj):
     """return first line of an object docstring"""
     doc = inspect.getdoc(obj) if obj.__doc__ else ""
     return doc.split("\n")[0].strip()
 
 
-@public.add
 def getspec(routine):
     """return a string with Python routine specification"""
     doc = pydoc.plain(pydoc.render_doc(routine))
     return doc.splitlines()[2]
 
 
-@public.add
 def getmodules():
     """return a list of modules"""
     if not os.path.exists("setup.cfg"):
@@ -30,18 +29,17 @@ def getmodules():
     return setupcfg.getmodules()
 
 
-@public.add
 def getmembers():
     """return all the members defined in `__all__` in a list of (name, value) pairs """
     objects = []
     for module in readme_docstring.getmodules():
         __all__ = getattr(module, "__all__", [])
         members = inspect.getmembers(module)
-        objects += list(map(lambda m: m, filter(lambda m: m[0] in __all__, members)))
+        objects += list(map(lambda m: m,
+                            filter(lambda m: m[0] in __all__, members)))
     return list(objects)
 
 
-@public.add
 def getclasses():
     """return a list of classes defined in `__all__`"""
     classes = []
@@ -51,7 +49,6 @@ def getclasses():
     return classes
 
 
-@public.add
 def getfunctions():
     """return a list of functions defined in `__all__`"""
     functions = []
@@ -61,7 +58,6 @@ def getfunctions():
     return functions
 
 
-@public.add
 class Table(markdown_table.Table):
     """abstract table class. attrs: `headers`, `objects`"""
     columns = ["name", "`__doc__`"]
@@ -90,7 +86,6 @@ class Table(markdown_table.Table):
         return data
 
 
-@public.add
 class Classes(Table):
     """`classes` table class. attrs: `classes`"""
     columns = ["class", "`__doc__`"]
@@ -101,7 +96,6 @@ class Classes(Table):
         self.objects = list(classes)
 
 
-@public.add
 class Functions(Table):
     """`functions` table class. attrs: `functions`"""
     columns = ["function", "`__doc__`"]

@@ -1,0 +1,4 @@
+click
+markdown-table
+readme-docstring
+setupcfg
